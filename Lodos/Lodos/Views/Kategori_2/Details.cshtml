@@ -1,0 +1,34 @@
+﻿@model Lodos.Models.Kategori_2
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kategori_2</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.K2Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.K2Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori_1.K1Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori_1.K1Ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.K2Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Lodos.Models.Kampanya>
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eski_Fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yeni_Fiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firma.FAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori_2.K2Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori_2.K2Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori_2.K1Id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+     
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eski_Fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yeni_Fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.resim)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.Firma.FAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori_2.K2Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori_2.K2Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori_2.K1Id)
+        </td>
+        
+    </tr>
+
+    
+}
+
+</table>

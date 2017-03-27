@@ -1,0 +1,74 @@
+﻿@model Lodos.Models.Kampanya
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kampanya</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eski_Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eski_Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yeni_Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yeni_Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firma.FAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firma.FAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori_2.K2Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori_2.K2Ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

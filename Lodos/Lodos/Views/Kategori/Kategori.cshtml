@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Lodos.Models.Kategori_1>
+
+@{
+    ViewBag.Title = "Kategori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.K1Ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.K1Ad)
+        </td>
+        <td>
+            @Html.ActionLink("Details", (item.K1Ad), "Kategori") 
+        </td>
+    </tr>
+}
+
+</table>

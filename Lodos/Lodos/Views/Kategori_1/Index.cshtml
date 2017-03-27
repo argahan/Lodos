@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Lodos.Models.Kategori_1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.K1Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.K1Id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.K1Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.K1Id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.K1Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.K1Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.K1Id })
+        </td>
+    </tr>
+}
+
+</table>

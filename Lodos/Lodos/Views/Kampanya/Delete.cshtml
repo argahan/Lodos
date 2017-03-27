@@ -1,0 +1,80 @@
+﻿@model Lodos.Models.Kampanya
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Kampanya</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eski_Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eski_Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yeni_Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yeni_Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.resim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.resim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firma.FAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firma.FAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori_2.K2Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori_2.K2Ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

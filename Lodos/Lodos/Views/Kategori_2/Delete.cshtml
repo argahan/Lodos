@@ -1,0 +1,40 @@
+﻿@model Lodos.Models.Kategori_2
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Kategori_2</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.K2Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.K2Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori_1.K1Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori_1.K1Ad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="lodos_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="e_Mail" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firma">
+          <Key>
+            <PropertyRef Name="FId" />
+          </Key>
+          <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAdi" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kampanya">
+          <Key>
+            <PropertyRef Name="KId" />
+          </Key>
+          <Property Name="KId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="K2Id" Type="int" Nullable="false" />
+          <Property Name="FId" Type="int" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Eski_Fiyat" Type="int" Nullable="false" />
+          <Property Name="Yeni_Fiyat" Type="int" Nullable="false" />
+          <Property Name="resim" Type="image" />
+        </EntityType>
+        <EntityType Name="Kategori_1">
+          <Key>
+            <PropertyRef Name="K1Id" />
+          </Key>
+          <Property Name="K1Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="K1Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategori_2">
+          <Key>
+            <PropertyRef Name="K2Id" />
+          </Key>
+          <Property Name="K1Id" Type="int" Nullable="false" />
+          <Property Name="K2Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="K2Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Kampanya__FId__1A14E395">
+          <End Role="Firma" Type="Self.Firma" Multiplicity="1" />
+          <End Role="Kampanya" Type="Self.Kampanya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="Kampanya">
+              <PropertyRef Name="FId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kampanya__K2Id__1920BF5C">
+          <End Role="Kategori_2" Type="Self.Kategori_2" Multiplicity="1" />
+          <End Role="Kampanya" Type="Self.Kampanya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori_2">
+              <PropertyRef Name="K2Id" />
+            </Principal>
+            <Dependent Role="Kampanya">
+              <PropertyRef Name="K2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kategori_2__K1Id__164452B1">
+          <End Role="Kategori_1" Type="Self.Kategori_1" Multiplicity="1" />
+          <End Role="Kategori_2" Type="Self.Kategori_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori_1">
+              <PropertyRef Name="K1Id" />
+            </Principal>
+            <Dependent Role="Kategori_2">
+              <PropertyRef Name="K1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="lodos_DBModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Firma" EntityType="Self.Firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kampanya" EntityType="Self.Kampanya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori_1" EntityType="Self.Kategori_1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori_2" EntityType="Self.Kategori_2" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Kampanya__FId__1A14E395" Association="Self.FK__Kampanya__FId__1A14E395">
+            <End Role="Firma" EntitySet="Firma" />
+            <End Role="Kampanya" EntitySet="Kampanya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kampanya__K2Id__1920BF5C" Association="Self.FK__Kampanya__K2Id__1920BF5C">
+            <End Role="Kategori_2" EntitySet="Kategori_2" />
+            <End Role="Kampanya" EntitySet="Kampanya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kategori_2__K1Id__164452B1" Association="Self.FK__Kategori_2__K1Id__164452B1">
+            <End Role="Kategori_1" EntitySet="Kategori_1" />
+            <End Role="Kategori_2" EntitySet="Kategori_2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="lodos_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AId" />
+          </Key>
+          <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="e_Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Firma">
+          <Key>
+            <PropertyRef Name="FId" />
+          </Key>
+          <Property Name="FId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kampanya" Relationship="Self.FK__Kampanya__FId__1A14E395" FromRole="Firma" ToRole="Kampanya" />
+        </EntityType>
+        <EntityType Name="Kampanya">
+          <Key>
+            <PropertyRef Name="KId" />
+          </Key>
+          <Property Name="KId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="K2Id" Type="Int32" Nullable="false" />
+          <Property Name="FId" Type="Int32" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Eski_Fiyat" Type="Int32" Nullable="false" />
+          <Property Name="Yeni_Fiyat" Type="Int32" Nullable="false" />
+          <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Firma" Relationship="Self.FK__Kampanya__FId__1A14E395" FromRole="Kampanya" ToRole="Firma" />
+          <NavigationProperty Name="Kategori_2" Relationship="Self.FK__Kampanya__K2Id__1920BF5C" FromRole="Kampanya" ToRole="Kategori_2" />
+        </EntityType>
+        <EntityType Name="Kategori_1">
+          <Key>
+            <PropertyRef Name="K1Id" />
+          </Key>
+          <Property Name="K1Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="K1Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kategori_2" Relationship="Self.FK__Kategori_2__K1Id__164452B1" FromRole="Kategori_1" ToRole="Kategori_2" />
+        </EntityType>
+        <EntityType Name="Kategori_2">
+          <Key>
+            <PropertyRef Name="K2Id" />
+          </Key>
+          <Property Name="K1Id" Type="Int32" Nullable="false" />
+          <Property Name="K2Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="K2Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kampanya" Relationship="Self.FK__Kampanya__K2Id__1920BF5C" FromRole="Kategori_2" ToRole="Kampanya" />
+          <NavigationProperty Name="Kategori_1" Relationship="Self.FK__Kategori_2__K1Id__164452B1" FromRole="Kategori_2" ToRole="Kategori_1" />
+        </EntityType>
+        <Association Name="FK__Kampanya__FId__1A14E395">
+          <End Role="Firma" Type="Self.Firma" Multiplicity="1" />
+          <End Role="Kampanya" Type="Self.Kampanya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Firma">
+              <PropertyRef Name="FId" />
+            </Principal>
+            <Dependent Role="Kampanya">
+              <PropertyRef Name="FId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kampanya__K2Id__1920BF5C">
+          <End Role="Kategori_2" Type="Self.Kategori_2" Multiplicity="1" />
+          <End Role="Kampanya" Type="Self.Kampanya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori_2">
+              <PropertyRef Name="K2Id" />
+            </Principal>
+            <Dependent Role="Kampanya">
+              <PropertyRef Name="K2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kategori_2__K1Id__164452B1">
+          <End Role="Kategori_1" Type="Self.Kategori_1" Multiplicity="1" />
+          <End Role="Kategori_2" Type="Self.Kategori_2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori_1">
+              <PropertyRef Name="K1Id" />
+            </Principal>
+            <Dependent Role="Kategori_2">
+              <PropertyRef Name="K1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="lodos_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Firma" EntityType="Self.Firma" />
+          <EntitySet Name="Kampanya" EntityType="Self.Kampanya" />
+          <EntitySet Name="Kategori_1" EntityType="Self.Kategori_1" />
+          <EntitySet Name="Kategori_2" EntityType="Self.Kategori_2" />
+          <AssociationSet Name="FK__Kampanya__FId__1A14E395" Association="Self.FK__Kampanya__FId__1A14E395">
+            <End Role="Firma" EntitySet="Firma" />
+            <End Role="Kampanya" EntitySet="Kampanya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kampanya__K2Id__1920BF5C" Association="Self.FK__Kampanya__K2Id__1920BF5C">
+            <End Role="Kategori_2" EntitySet="Kategori_2" />
+            <End Role="Kampanya" EntitySet="Kampanya" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kategori_2__K1Id__164452B1" Association="Self.FK__Kategori_2__K1Id__164452B1">
+            <End Role="Kategori_1" EntitySet="Kategori_1" />
+            <End Role="Kategori_2" EntitySet="Kategori_2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="lodos_DBModelStoreContainer" CdmEntityContainer="lodos_DBEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="lodos_DBModel.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="AId" ColumnName="AId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="e_Mail" ColumnName="e_Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firma">
+            <EntityTypeMapping TypeName="lodos_DBModel.Firma">
+              <MappingFragment StoreEntitySet="Firma">
+                <ScalarProperty Name="FId" ColumnName="FId" />
+                <ScalarProperty Name="FAdi" ColumnName="FAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kampanya">
+            <EntityTypeMapping TypeName="lodos_DBModel.Kampanya">
+              <MappingFragment StoreEntitySet="Kampanya">
+                <ScalarProperty Name="KId" ColumnName="KId" />
+                <ScalarProperty Name="K2Id" ColumnName="K2Id" />
+                <ScalarProperty Name="FId" ColumnName="FId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Eski_Fiyat" ColumnName="Eski_Fiyat" />
+                <ScalarProperty Name="Yeni_Fiyat" ColumnName="Yeni_Fiyat" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori_1">
+            <EntityTypeMapping TypeName="lodos_DBModel.Kategori_1">
+              <MappingFragment StoreEntitySet="Kategori_1">
+                <ScalarProperty Name="K1Id" ColumnName="K1Id" />
+                <ScalarProperty Name="K1Ad" ColumnName="K1Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori_2">
+            <EntityTypeMapping TypeName="lodos_DBModel.Kategori_2">
+              <MappingFragment StoreEntitySet="Kategori_2">
+                <ScalarProperty Name="K1Id" ColumnName="K1Id" />
+                <ScalarProperty Name="K2Id" ColumnName="K2Id" />
+                <ScalarProperty Name="K2Ad" ColumnName="K2Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
